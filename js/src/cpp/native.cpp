@@ -17,7 +17,8 @@ void initialize_ocaml() {
 Napi::String Greeting(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
 
-  const char *strValue = info[0].As<Napi::String>().Utf8Value().c_str();
+  std::string str = info[0].As<Napi::String>().Utf8Value();
+  const char *strValue = str.c_str();
   std::string res(lib_hello(strdup(strValue)));
 
   return Napi::String::New(env, res);
