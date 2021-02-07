@@ -13,4 +13,5 @@ cp _esy/default/build/install/default/lib/mylib/mylib.h js/include/mylib.h
 cd js
 yarn install
 yarn build
-node test.js
+yarn re:build
+node src/res/test.bs.js

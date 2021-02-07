@@ -14,7 +14,7 @@ void initialize_ocaml() {
   caml_startup(&strValue);
 }
 
-Napi::String HelloWorld(const Napi::CallbackInfo& info) {
+Napi::String Greeting(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
 
   const char *strValue = info[0].As<Napi::String>().Utf8Value().c_str();
@@ -25,8 +25,8 @@ Napi::String HelloWorld(const Napi::CallbackInfo& info) {
 
 Napi::Object Init(Napi::Env env, Napi::Object exports) {
   initialize_ocaml();
-  exports.Set(Napi::String::New(env, "HelloWorld"),
-              Napi::Function::New(env, HelloWorld));
+  exports.Set(Napi::String::New(env, "greeting"),
+              Napi::Function::New(env, Greeting));
   return exports;
 }
 

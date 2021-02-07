@@ -15,3 +15,5 @@ a.out
 js/build
 .vscode
 js/**/mylib.*
+js/lib
+*.bs.js

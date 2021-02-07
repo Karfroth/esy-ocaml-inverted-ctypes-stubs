@@ -3,7 +3,7 @@
     {
       "target_name": "native",
       "sources": [
-        "src/native.cpp"
+        "src/cpp/native.cpp"
       ],
       "include_dirs": [
         "<!@(node -p \"require('node-addon-api').include\")",
