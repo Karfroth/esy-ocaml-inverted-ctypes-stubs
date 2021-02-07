@@ -3,6 +3,7 @@
  (libraries bindings ctypes lib)
  (foreign_stubs (language c) (names mylib))
  (flags :standard -linkall)
+ (ocamlopt_flags :standard -fPIC -runtime-variant _pic)
  (modes (native object)))
 
 (install

@@ -1,12 +1,16 @@
 #! /bin/sh
-esy install &&
-esy dune build gen &&
-esy dune exec gen/Gen.exe ./mylib &&
-esy build &&
-g++ \
--I _esy/default/build/install/default/lib/mylib \
--L _esy/default/build/install/default/lib/mylib \
-client/asdf.cpp \
-_esy/default/build/install/default/lib/mylib/mylib.o \
--Wl,--no-as-needed -ldl -lm &&
-LD_LIBRARY_PATH=_esy/default/build/install/default/lib/mylib ./a.out
+
+set -e
+
+esy install
+esy dune build gen
+esy dune exec gen/Gen.exe ./mylib
+esy build
+mkdir -p js/include
+cp _esy/default/build/install/default/lib/mylib/mylib.o js/include/mylib.o
+cp _esy/default/build/install/default/lib/mylib/mylib.h js/include/mylib.h
+
+cd js
+yarn install
+yarn build
+node test.js
