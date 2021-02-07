@@ -4,7 +4,9 @@
 #include <caml/mlvalues.h>
 #include <caml/callback.h>
 #include <caml/alloc.h>
-#include <mylib.h>
+extern "C" {
+  #include <mylib.h>
+}
 
 void initialize_ocaml (char** argv) {
   caml_startup(argv);

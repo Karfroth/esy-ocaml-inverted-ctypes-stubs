@@ -3,8 +3,8 @@
  (libraries bindings ctypes lib)
  (foreign_stubs (language c) (names mylib))
  (flags :standard -linkall)
- (modes (native shared_object)))
+ (modes (native object)))
 
 (install
  (section lib)
- (files (mylib.so as libmylib.so) mylib.h))
+ (files (mylib.exe.o as mylib.o) mylib.h))
