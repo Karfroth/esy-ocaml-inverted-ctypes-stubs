@@ -24,10 +24,21 @@ Napi::String Greeting(const Napi::CallbackInfo& info) {
   return Napi::String::New(env, res);
 }
 
+Napi::Number Fibonacci(const Napi::CallbackInfo& info) {
+  Napi::Env env = info.Env();
+
+  int n = info[0].As<Napi::Number>().Int32Value();
+  double res = lib_fib(n) * 1.0;
+
+  return Napi::Number::New(env, res);
+}
+
 Napi::Object Init(Napi::Env env, Napi::Object exports) {
   initialize_ocaml();
   exports.Set(Napi::String::New(env, "greeting"),
               Napi::Function::New(env, Greeting));
+  exports.Set(Napi::String::New(env, "fibonacci"),
+              Napi::Function::New(env, Fibonacci));
   return exports;
 }
 
