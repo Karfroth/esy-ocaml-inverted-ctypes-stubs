@@ -7,6 +7,7 @@ Tested on Ubuntu 20.04(WSL 2).
 - yarn
 - node
 - esy(npm install -g esy)
+- ReScript (npm install -g bsb-platform)
 
 ## Usage
 
