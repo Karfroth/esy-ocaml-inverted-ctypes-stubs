@@ -1,22 +1,18 @@
 (executable
  (name mylib)
- (libraries bindings ctypes lib ctypes.foreign)
- (foreign_stubs (language c) (names mylib))
+ (libraries ctypes ctypes.foreign)
  (foreign_stubs
-  (language cxx)
-  (names mylibx)
+  (language c)
+  (names mylib)
   (flags
-   -fPIC
-   -DNAPI_VERSION=3
-   -Daddon_EXPORTS
-   -I/home/wlee/.cmake-js/node-x64/v15.8.0/include/node
-   -I/home/wlee/workspaces/node/Nodejs-Napi-Addon-Using-Cmake/node_modules/node-addon-api
-   -I/usr/include/c++/9
-   -I/usr/include/x86_64-linux-gnu/c++/9))
+    -fPIC
+    -DNAPI_VERSION=3
+    -Daddon_EXPORTS
+    -I/home/wlee/.cmake-js/node-x64/v15.8.0/include/node))
+ (ocamlopt_flags :standard -fPIC -runtime-variant _pic)
  (flags :standard -linkall)
-;  (ocamlopt_flags :standard -fPIC -runtime-variant _pic)
  (modes (native shared_object)))
 
 (install
  (section lib)
- (files (mylib.so as libmylib.so) mylib.h mylibx.h))
+ (files (mylib.so as libmylib.so) mylib.h))

@@ -8,10 +8,6 @@ _release
 *.byte
 *.native
 *.install
-mylib/mylib.c
-mylib/mylib.h
-mylib/mylib_bindings.ml
-a.out
 js/build
 .vscode
 js/**/mylib.*
